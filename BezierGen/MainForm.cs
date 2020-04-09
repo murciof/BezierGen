@@ -20,7 +20,7 @@ namespace BezierGen
 
         private void GenerateBezier(object sender, PaintEventArgs e)
         {
-            Pen blackPen = new Pen(Color.Red, 2);
+            Pen blackPen = new Pen(Color.Yellow, 2);
 
             int i = 0;
             int control = 13;
@@ -52,6 +52,12 @@ namespace BezierGen
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_genCurve_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2.Refresh();
+            
         }
     }
 }

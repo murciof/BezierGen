@@ -12,6 +12,9 @@ namespace BezierGen
 {
     public partial class MainForm : Form
     {
+
+        bool generateActivation = false;
+
         public MainForm()
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -20,22 +23,27 @@ namespace BezierGen
 
         private void GenerateBezier(object sender, PaintEventArgs e)
         {
-            Pen blackPen = new Pen(Color.Yellow, 2);
-
-            int i = 0;
-            int control = 13;
-            Random random = new Random();
-            List<Point> bezierControl = new List<Point>();
-            while (i < control)
+            if (generateActivation == true)
             {
-                bezierControl.Add(new Point(random.Next(0,400), random.Next(0, 400)));
-                i++;
-            }
-            
-            Point[] bezierPoints = bezierControl.ToArray();
+                Pen blackPen = new Pen(Color.Yellow, 2);
 
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.DrawBeziers(blackPen, bezierPoints);
+                int i = 0;
+                int control = 13;
+                Random random = new Random();
+                List<Point> bezierControl = new List<Point>();
+                while (i < control)
+                {
+                    bezierControl.Add(new Point(random.Next(0, 400), random.Next(0, 400)));
+                    i++;
+                }
+
+                Point[] bezierPoints = bezierControl.ToArray();
+
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.DrawBeziers(blackPen, bezierPoints);
+            }
+
+            generateActivation = false;
 
         }
 
@@ -56,8 +64,8 @@ namespace BezierGen
 
         private void button_genCurve_Click(object sender, EventArgs e)
         {
+            generateActivation = true;
             splitContainer1.Panel2.Refresh();
-            
         }
     }
 }

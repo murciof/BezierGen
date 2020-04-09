@@ -67,5 +67,10 @@ namespace BezierGen
             generateActivation = true;
             splitContainer1.Panel2.Refresh();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

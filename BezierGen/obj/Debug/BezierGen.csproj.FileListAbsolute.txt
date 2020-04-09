@@ -1,0 +1,10 @@
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\bin\Debug\BezierGen.exe.config
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\bin\Debug\BezierGen.exe
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\bin\Debug\BezierGen.pdb
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.csprojAssemblyReference.cache
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.MainForm.resources
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.Properties.Resources.resources
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.csproj.GenerateResource.cache
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.csproj.CoreCompileInputs.cache
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.exe
+C:\Users\Murcio Filho\Workspace\Visual Studio\BezierGen\BezierGen\obj\Debug\BezierGen.pdb

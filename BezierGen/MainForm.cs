@@ -14,6 +14,7 @@ namespace BezierGen
     {
         public MainForm()
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
         }
 
@@ -46,6 +47,11 @@ namespace BezierGen
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
             GenerateBezier(sender, e);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

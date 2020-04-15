@@ -31,5 +31,14 @@ namespace BezierGen
         {
             return documentType;
         }
+
+        public void SetDimensionX(int dimensionX)
+        {
+            this.dimensionX = dimensionX;
+        }
+        public void SetDimensionY(int dimensionY)
+        {
+            this.dimensionY = dimensionY;
+        }
     }
 }

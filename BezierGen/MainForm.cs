@@ -12,9 +12,11 @@ namespace BezierGen
 {
     public partial class MainForm : Form
     {
-
+        int magRatio = 1;
+        bool isPortrait = true;
+        bool isPastPortrait = true;
         private bool generateActivation = false;
-        static private Document[] documentDB =
+        private Document[] documentDB =
         {
             new Document(210, 297, "A4 Paper (210mm x 297mm)"),
             new Document(50, 80, "Business Card (50mm x 80mm)")
@@ -50,8 +52,14 @@ namespace BezierGen
                 i++;
             }
             comboBox_stroke.SelectedIndex = 0;
+        }
 
-            splitContainer1.SplitterDistance = 40;
+        private Document SwapDimensions(Document document)
+        {
+            int dimensionXTemp = document.GetDimensionX();
+            document.SetDimensionX(document.GetDimensionY());
+            document.SetDimensionY(dimensionXTemp);
+            return document;
         }
 
         private void GenerateBezier(object sender, PaintEventArgs e)
@@ -75,6 +83,23 @@ namespace BezierGen
                 int marginX = int.Parse(textBox_marginX.Text);
                 int marginY = int.Parse(textBox_marginY.Text);
 
+                if(isPortrait == false)
+                {
+                    if(isPastPortrait == true)
+                    {
+                        currentDocument = SwapDimensions(currentDocument);
+                        isPastPortrait = false;
+                    }
+                }
+                else
+                {
+                    if(isPastPortrait == false)
+                    {
+                        currentDocument = SwapDimensions(currentDocument);
+                        isPastPortrait = true;
+                    }
+                }
+
                 int documentWithMarginX = currentDocument.GetDimensionX() - marginX;
                 int documentWithMarginY = currentDocument.GetDimensionY() - marginY;
 
@@ -83,12 +108,13 @@ namespace BezierGen
 
                 while (i < control)
                 {
-                    bezierControl.Add(new Point(random.Next(marginX, documentWithMarginX), random.Next(marginY, documentWithMarginY)));
+                    bezierControl.Add(new Point(random.Next(marginX * magRatio, documentWithMarginX * magRatio), random.Next(marginY * magRatio, documentWithMarginY * magRatio)));
+
                     i++;
                 }
 
-                Rectangle rect = new Rectangle(0,0,currentDocument.GetDimensionX(), currentDocument.GetDimensionY());
-                Rectangle rectMargin = new Rectangle(marginX, marginY, documentWithDoubleMarginX, documentWithDoubleMarginY);
+                Rectangle rect = new Rectangle(0,0,currentDocument.GetDimensionX() * magRatio, currentDocument.GetDimensionY() * magRatio);
+                Rectangle rectMargin = new Rectangle(marginX * magRatio, marginY * magRatio, documentWithDoubleMarginX * magRatio, documentWithDoubleMarginY * magRatio);
                 Point[] bezierPoints = bezierControl.ToArray();
 
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -102,7 +128,7 @@ namespace BezierGen
 
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void canvasPanel_Paint(object sender, PaintEventArgs e)
         {
             GenerateBezier(sender, e);
         }
@@ -110,7 +136,46 @@ namespace BezierGen
         private void button_genCurve_Click(object sender, EventArgs e)
         {
             generateActivation = true;
-            splitContainer1.Panel2.Refresh();
+            canvasPanel.Refresh();
         }
+
+        private void button_mag1x_Click(object sender, EventArgs e)
+        {
+            magRatio = 1;
+        }
+
+        private void button_mag2x_Click(object sender, EventArgs e)
+        {
+            magRatio = 2;
+        }
+
+        private void button_mag3x_Click(object sender, EventArgs e)
+        {
+            magRatio = 3;
+        }
+
+        private void button_mag4x_Click(object sender, EventArgs e)
+        {
+            magRatio = 4;
+        }
+
+        private void button_mag5x_Click(object sender, EventArgs e)
+        {
+            magRatio = 5;
+        }
+
+        private void button_orientationP_Click(object sender, EventArgs e)
+        {
+            isPortrait = true;
+        }
+
+        private void button_orientationL_Click(object sender, EventArgs e)
+        {
+            isPortrait = false;
+        }
+
+        
+
+        
     }
 }

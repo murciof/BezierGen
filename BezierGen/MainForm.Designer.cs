@@ -72,7 +72,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.label_points);
             this.splitContainer1.Panel1.Controls.Add(this.label_documentType);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox_documentType);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -237,8 +236,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(1166, 450);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Name = "BezierGen";
+            this.Text = "BezierGen";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

@@ -69,7 +69,7 @@ namespace BezierGen
         {
             if (generateActivation == true)
             {
-                Pen bezierPen = new Pen(Color.Orange, 1);
+                Pen bezierPen = new Pen(Color.Orange, int.Parse(comboBox_stroke.SelectedItem.ToString()));
                 Pen rectanglePen = new Pen(Color.Black, 2);
                 Pen marginPen = new Pen(Color.Red, .5F);
                 SolidBrush rectangleBackground = new SolidBrush(Color.White);
@@ -83,8 +83,20 @@ namespace BezierGen
 
                 Document currentDocument = documentDB[comboBox_documentType.SelectedIndex];
 
-                int marginX = int.Parse(textBox_marginX.Text);
-                int marginY = int.Parse(textBox_marginY.Text);
+                int marginX;
+                int marginY;
+
+                if(string.IsNullOrWhiteSpace(textBox_marginX.Text) || string.IsNullOrWhiteSpace(textBox_marginY.Text))
+                {
+                    marginX = 0;
+                    marginY = 0;
+                }
+                else
+                {
+                    marginX = int.Parse(textBox_marginX.Text);
+                    marginY = int.Parse(textBox_marginY.Text);
+                }
+                
 
                 if(isPortrait == false)
                 {

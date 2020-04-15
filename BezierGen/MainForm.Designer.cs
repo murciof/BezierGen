@@ -45,13 +45,13 @@
             this.label_stroke = new System.Windows.Forms.Label();
             this.canvasPanel = new System.Windows.Forms.Panel();
             this.additionalPanel = new System.Windows.Forms.Panel();
+            this.button_mag5x = new System.Windows.Forms.Button();
+            this.button_mag4x = new System.Windows.Forms.Button();
             this.button_orientationL = new System.Windows.Forms.Button();
             this.button_orientationP = new System.Windows.Forms.Button();
             this.button_mag3x = new System.Windows.Forms.Button();
             this.button_mag2x = new System.Windows.Forms.Button();
             this.button_mag1x = new System.Windows.Forms.Button();
-            this.button_mag4x = new System.Windows.Forms.Button();
-            this.button_mag5x = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.additionalPanel.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,7 @@
             // comboBox_stroke
             // 
             this.comboBox_stroke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.comboBox_stroke.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_stroke.ForeColor = System.Drawing.Color.Black;
             this.comboBox_stroke.FormattingEnabled = true;
             this.comboBox_stroke.Location = new System.Drawing.Point(662, 8);
@@ -91,6 +92,7 @@
             // comboBox_points
             // 
             this.comboBox_points.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.comboBox_points.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_points.ForeColor = System.Drawing.Color.Black;
             this.comboBox_points.FormattingEnabled = true;
             this.comboBox_points.Location = new System.Drawing.Point(526, 8);
@@ -101,6 +103,7 @@
             // comboBox_documentType
             // 
             this.comboBox_documentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.comboBox_documentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_documentType.ForeColor = System.Drawing.Color.Black;
             this.comboBox_documentType.FormattingEnabled = true;
             this.comboBox_documentType.Location = new System.Drawing.Point(131, 8);
@@ -252,6 +255,30 @@
             this.additionalPanel.Size = new System.Drawing.Size(1166, 39);
             this.additionalPanel.TabIndex = 2;
             // 
+            // button_mag5x
+            // 
+            this.button_mag5x.BackColor = System.Drawing.Color.Transparent;
+            this.button_mag5x.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.button_mag5x.Location = new System.Drawing.Point(181, 9);
+            this.button_mag5x.Name = "button_mag5x";
+            this.button_mag5x.Size = new System.Drawing.Size(37, 23);
+            this.button_mag5x.TabIndex = 20;
+            this.button_mag5x.Text = "5x";
+            this.button_mag5x.UseVisualStyleBackColor = false;
+            this.button_mag5x.Click += new System.EventHandler(this.button_mag5x_Click);
+            // 
+            // button_mag4x
+            // 
+            this.button_mag4x.BackColor = System.Drawing.Color.Transparent;
+            this.button_mag4x.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.button_mag4x.Location = new System.Drawing.Point(138, 9);
+            this.button_mag4x.Name = "button_mag4x";
+            this.button_mag4x.Size = new System.Drawing.Size(37, 23);
+            this.button_mag4x.TabIndex = 19;
+            this.button_mag4x.Text = "4x";
+            this.button_mag4x.UseVisualStyleBackColor = false;
+            this.button_mag4x.Click += new System.EventHandler(this.button_mag4x_Click);
+            // 
             // button_orientationL
             // 
             this.button_orientationL.BackColor = System.Drawing.Color.Transparent;
@@ -311,30 +338,6 @@
             this.button_mag1x.Text = "1x";
             this.button_mag1x.UseVisualStyleBackColor = false;
             this.button_mag1x.Click += new System.EventHandler(this.button_mag1x_Click);
-            // 
-            // button_mag4x
-            // 
-            this.button_mag4x.BackColor = System.Drawing.Color.Transparent;
-            this.button_mag4x.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button_mag4x.Location = new System.Drawing.Point(138, 9);
-            this.button_mag4x.Name = "button_mag4x";
-            this.button_mag4x.Size = new System.Drawing.Size(37, 23);
-            this.button_mag4x.TabIndex = 19;
-            this.button_mag4x.Text = "4x";
-            this.button_mag4x.UseVisualStyleBackColor = false;
-            this.button_mag4x.Click += new System.EventHandler(this.button_mag4x_Click);
-            // 
-            // button_mag5x
-            // 
-            this.button_mag5x.BackColor = System.Drawing.Color.Transparent;
-            this.button_mag5x.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button_mag5x.Location = new System.Drawing.Point(181, 9);
-            this.button_mag5x.Name = "button_mag5x";
-            this.button_mag5x.Size = new System.Drawing.Size(37, 23);
-            this.button_mag5x.TabIndex = 20;
-            this.button_mag5x.Text = "5x";
-            this.button_mag5x.UseVisualStyleBackColor = false;
-            this.button_mag5x.Click += new System.EventHandler(this.button_mag5x_Click);
             // 
             // MainForm
             // 

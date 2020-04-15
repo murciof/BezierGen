@@ -17,7 +17,7 @@ namespace BezierGen
         static private Document[] documentDB =
         {
             new Document(210, 297, "A4 Paper (210mm x 297mm)"),
-            new Document(80, 50, "Business Card (80mm x 50mm)")
+            new Document(50, 80, "Business Card (50mm x 80mm)")
         };
 
         public MainForm()
@@ -50,6 +50,8 @@ namespace BezierGen
                 i++;
             }
             comboBox_stroke.SelectedIndex = 0;
+
+            splitContainer1.SplitterDistance = 40;
         }
 
         private void GenerateBezier(object sender, PaintEventArgs e)
@@ -58,6 +60,7 @@ namespace BezierGen
             {
                 Pen bezierPen = new Pen(Color.Orange, 1);
                 Pen rectanglePen = new Pen(Color.Black, 2);
+                Pen marginPen = new Pen(Color.Red, .5F);
                 SolidBrush rectangleBackground = new SolidBrush(Color.White);
 
                 int i = 0;
@@ -69,18 +72,29 @@ namespace BezierGen
 
                 Document currentDocument = documentDB[comboBox_documentType.SelectedIndex];
 
+                int marginX = int.Parse(textBox_marginX.Text);
+                int marginY = int.Parse(textBox_marginY.Text);
+
+                int documentWithMarginX = currentDocument.GetDimensionX() - marginX;
+                int documentWithMarginY = currentDocument.GetDimensionY() - marginY;
+
+                int documentWithDoubleMarginX = currentDocument.GetDimensionX() - 2 * marginX;
+                int documentWithDoubleMarginY = currentDocument.GetDimensionY() - 2 * marginY;
+
                 while (i < control)
                 {
-                    bezierControl.Add(new Point(random.Next(0, currentDocument.GetDimensionX()), random.Next(0, currentDocument.GetDimensionY())));
+                    bezierControl.Add(new Point(random.Next(marginX, documentWithMarginX), random.Next(marginY, documentWithMarginY)));
                     i++;
                 }
 
                 Rectangle rect = new Rectangle(0,0,currentDocument.GetDimensionX(), currentDocument.GetDimensionY());
+                Rectangle rectMargin = new Rectangle(marginX, marginY, documentWithDoubleMarginX, documentWithDoubleMarginY);
                 Point[] bezierPoints = bezierControl.ToArray();
 
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 e.Graphics.DrawRectangle(rectanglePen, rect);
                 e.Graphics.FillRectangle(rectangleBackground, rect);
+                e.Graphics.DrawRectangle(marginPen, rectMargin);
                 e.Graphics.DrawBeziers(bezierPen, bezierPoints);
             }
 
@@ -96,11 +110,6 @@ namespace BezierGen
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
             GenerateBezier(sender, e);
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button_genCurve_Click(object sender, EventArgs e)

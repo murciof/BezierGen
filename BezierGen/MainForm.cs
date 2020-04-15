@@ -155,19 +155,19 @@ namespace BezierGen
 
 
 
-                            int randomXPointCacheTrackbarDeltaNeg = randomXPointCache - trackBar_curveLimit.Value;
-                            int randomXPointCacheTrackbarDeltaPos = randomXPointCache + trackBar_curveLimit.Value;
+                            int randomXPointCacheTrackbarDeltaNeg = randomXPointCache - (trackBar_curveLimit.Value * magRatio);
+                            int randomXPointCacheTrackbarDeltaPos = randomXPointCache + (trackBar_curveLimit.Value * magRatio);
 
-                            int randomYPointCacheTrackbarDeltaNeg = randomYPointCache - trackBar_curveLimit.Value;
-                            int randomYPointCacheTrackbarDeltaPos = randomYPointCache + trackBar_curveLimit.Value;
+                            int randomYPointCacheTrackbarDeltaNeg = randomYPointCache - (trackBar_curveLimit.Value * magRatio);
+                            int randomYPointCacheTrackbarDeltaPos = randomYPointCache + (trackBar_curveLimit.Value * magRatio);
 
-                            randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg * magRatio, randomXPointCacheTrackbarDeltaPos * magRatio);
-                            randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg * magRatio, randomYPointCacheTrackbarDeltaPos * magRatio);
+                            randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg, randomXPointCacheTrackbarDeltaPos);
+                            randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg, randomYPointCacheTrackbarDeltaPos);
                             
 
                             while((randomXPoint >= (documentWithMarginX * magRatio)) || (randomXPoint <= (marginX * magRatio)))
                             {
-                                randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg * magRatio, randomXPointCacheTrackbarDeltaPos * magRatio);
+                                randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg, randomXPointCacheTrackbarDeltaPos);
                                 if (checkbox_debug.Checked)
                                 {
                                     MessageBox.Show("While Loop\nrandomYPoint = " + randomXPoint + "\nrandomXPointCacheTrackbarDeltaNeg = " + randomXPointCacheTrackbarDeltaNeg + "\nrandomXPointCacheTrackbarDeltaPos = " + randomXPointCacheTrackbarDeltaPos, "Debug Mode", MessageBoxButtons.OK);
@@ -175,7 +175,7 @@ namespace BezierGen
                             }
                             while ((randomYPoint >= (documentWithMarginY * magRatio)) || (randomYPoint <= (marginY * magRatio)))
                             {
-                                randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg * magRatio, randomYPointCacheTrackbarDeltaPos * magRatio);
+                                randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg, randomYPointCacheTrackbarDeltaPos);
                                 if (checkbox_debug.Checked)
                                 {
                                     MessageBox.Show("While Loop\nrandomYPoint = " + randomYPoint + "\nrandomYPointCacheTrackbarDeltaNeg = " + randomYPointCacheTrackbarDeltaNeg + "\nnrandomYPointCacheTrackbarDeltaPos = " + randomYPointCacheTrackbarDeltaPos, "Debug Mode", MessageBoxButtons.OK);

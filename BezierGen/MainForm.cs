@@ -52,6 +52,9 @@ namespace BezierGen
                 i++;
             }
             comboBox_stroke.SelectedIndex = 0;
+
+            button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Bold);
+            button_orientationP.Font = new Font(button_orientationP.Font, FontStyle.Bold);
         }
 
         private Document SwapDimensions(Document document)
@@ -128,6 +131,63 @@ namespace BezierGen
 
         }
 
+        private void switchOrientationButtonStyle(int switcher)
+        {
+            switch (switcher)
+            {
+                case 1:
+                    button_orientationP.Font = new Font(button_mag1x.Font, FontStyle.Bold);
+                    button_orientationL.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    break;
+                case 2:
+                    button_orientationP.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    button_orientationL.Font = new Font(button_mag1x.Font, FontStyle.Bold);
+                    break;
+            }
+        }
+
+        private void switchMagnifierButtonStyle(int switcher)
+        {
+            switch (switcher)
+            {
+                case 1:
+                    button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Bold);
+                    button_mag2x.Font = new Font(button_mag2x.Font, FontStyle.Regular);
+                    button_mag3x.Font = new Font(button_mag3x.Font, FontStyle.Regular);
+                    button_mag4x.Font = new Font(button_mag4x.Font, FontStyle.Regular);
+                    button_mag5x.Font = new Font(button_mag5x.Font, FontStyle.Regular);
+                    break;
+                case 2:
+                    button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    button_mag2x.Font = new Font(button_mag2x.Font, FontStyle.Bold);
+                    button_mag3x.Font = new Font(button_mag3x.Font, FontStyle.Regular);
+                    button_mag4x.Font = new Font(button_mag4x.Font, FontStyle.Regular);
+                    button_mag5x.Font = new Font(button_mag5x.Font, FontStyle.Regular);
+                    break;
+                case 3:
+                    button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    button_mag2x.Font = new Font(button_mag2x.Font, FontStyle.Regular);
+                    button_mag3x.Font = new Font(button_mag3x.Font, FontStyle.Bold);
+                    button_mag4x.Font = new Font(button_mag4x.Font, FontStyle.Regular);
+                    button_mag5x.Font = new Font(button_mag5x.Font, FontStyle.Regular);
+                    break;
+                case 4:
+                    button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    button_mag2x.Font = new Font(button_mag2x.Font, FontStyle.Regular);
+                    button_mag3x.Font = new Font(button_mag3x.Font, FontStyle.Regular);
+                    button_mag4x.Font = new Font(button_mag4x.Font, FontStyle.Bold);
+                    button_mag5x.Font = new Font(button_mag5x.Font, FontStyle.Regular);
+                    break;
+                case 5:
+                    button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Regular);
+                    button_mag2x.Font = new Font(button_mag2x.Font, FontStyle.Regular);
+                    button_mag3x.Font = new Font(button_mag3x.Font, FontStyle.Regular);
+                    button_mag4x.Font = new Font(button_mag4x.Font, FontStyle.Regular);
+                    button_mag5x.Font = new Font(button_mag5x.Font, FontStyle.Bold);
+                    break;
+            }
+        }
+
         private void canvasPanel_Paint(object sender, PaintEventArgs e)
         {
             GenerateBezier(sender, e);
@@ -141,36 +201,43 @@ namespace BezierGen
 
         private void button_mag1x_Click(object sender, EventArgs e)
         {
+            switchMagnifierButtonStyle(1);
             magRatio = 1;
         }
 
         private void button_mag2x_Click(object sender, EventArgs e)
         {
+            switchMagnifierButtonStyle(2);
             magRatio = 2;
         }
 
         private void button_mag3x_Click(object sender, EventArgs e)
         {
+            switchMagnifierButtonStyle(3);
             magRatio = 3;
         }
 
         private void button_mag4x_Click(object sender, EventArgs e)
         {
+            switchMagnifierButtonStyle(4);
             magRatio = 4;
         }
 
         private void button_mag5x_Click(object sender, EventArgs e)
         {
+            switchMagnifierButtonStyle(5);
             magRatio = 5;
         }
 
         private void button_orientationP_Click(object sender, EventArgs e)
         {
+            switchOrientationButtonStyle(1);
             isPortrait = true;
         }
 
         private void button_orientationL_Click(object sender, EventArgs e)
         {
+            switchOrientationButtonStyle(2);
             isPortrait = false;
         }
 

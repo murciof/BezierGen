@@ -57,6 +57,7 @@
             this.button_mag2x = new System.Windows.Forms.Button();
             this.button_mag1x = new System.Windows.Forms.Button();
             this.checkbox_debug = new System.Windows.Forms.CheckBox();
+            this.label_curveLimitTitle = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             this.additionalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_curveLimit)).BeginInit();
@@ -206,19 +207,20 @@
             // 
             this.button_genSeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.button_genSeed.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button_genSeed.Location = new System.Drawing.Point(695, 9);
+            this.button_genSeed.Location = new System.Drawing.Point(647, 9);
             this.button_genSeed.Name = "button_genSeed";
             this.button_genSeed.Size = new System.Drawing.Size(90, 23);
             this.button_genSeed.TabIndex = 12;
             this.button_genSeed.Text = "Generate seed";
             this.button_genSeed.UseVisualStyleBackColor = false;
+            this.button_genSeed.Click += new System.EventHandler(this.button_genSeed_Click);
             // 
             // textBox_seed
             // 
             this.textBox_seed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.textBox_seed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_seed.ForeColor = System.Drawing.Color.Black;
-            this.textBox_seed.Location = new System.Drawing.Point(584, 10);
+            this.textBox_seed.Location = new System.Drawing.Point(536, 10);
             this.textBox_seed.Name = "textBox_seed";
             this.textBox_seed.Size = new System.Drawing.Size(106, 20);
             this.textBox_seed.TabIndex = 11;
@@ -228,7 +230,7 @@
             this.label_seed.AutoSize = true;
             this.label_seed.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_seed.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_seed.Location = new System.Drawing.Point(537, 11);
+            this.label_seed.Location = new System.Drawing.Point(489, 11);
             this.label_seed.Name = "label_seed";
             this.label_seed.Size = new System.Drawing.Size(42, 19);
             this.label_seed.TabIndex = 10;
@@ -246,6 +248,7 @@
             // 
             // additionalPanel
             // 
+            this.additionalPanel.Controls.Add(this.label_curveLimitTitle);
             this.additionalPanel.Controls.Add(this.label_curveLimit);
             this.additionalPanel.Controls.Add(this.trackBar_curveLimit);
             this.additionalPanel.Controls.Add(this.comboBox_curveType);
@@ -271,7 +274,7 @@
             this.label_curveLimit.AutoSize = true;
             this.label_curveLimit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_curveLimit.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label_curveLimit.Location = new System.Drawing.Point(901, 13);
+            this.label_curveLimit.Location = new System.Drawing.Point(936, 13);
             this.label_curveLimit.Name = "label_curveLimit";
             this.label_curveLimit.Size = new System.Drawing.Size(53, 15);
             this.label_curveLimit.TabIndex = 21;
@@ -280,10 +283,10 @@
             // trackBar_curveLimit
             // 
             this.trackBar_curveLimit.LargeChange = 10;
-            this.trackBar_curveLimit.Location = new System.Drawing.Point(791, 7);
-            this.trackBar_curveLimit.Maximum = 50;
+            this.trackBar_curveLimit.Location = new System.Drawing.Point(782, 7);
+            this.trackBar_curveLimit.Maximum = 100;
             this.trackBar_curveLimit.Name = "trackBar_curveLimit";
-            this.trackBar_curveLimit.Size = new System.Drawing.Size(104, 45);
+            this.trackBar_curveLimit.Size = new System.Drawing.Size(149, 45);
             this.trackBar_curveLimit.SmallChange = 5;
             this.trackBar_curveLimit.TabIndex = 0;
             this.trackBar_curveLimit.TickFrequency = 5;
@@ -297,7 +300,7 @@
             this.comboBox_curveType.FormattingEnabled = true;
             this.comboBox_curveType.Location = new System.Drawing.Point(371, 10);
             this.comboBox_curveType.Name = "comboBox_curveType";
-            this.comboBox_curveType.Size = new System.Drawing.Size(161, 21);
+            this.comboBox_curveType.Size = new System.Drawing.Size(112, 21);
             this.comboBox_curveType.TabIndex = 15;
             // 
             // button_mag5x
@@ -407,6 +410,17 @@
             this.checkbox_debug.UseVisualStyleBackColor = true;
             this.checkbox_debug.CheckedChanged += new System.EventHandler(this.checkbox_debug_CheckedChanged);
             // 
+            // label_curveLimitTitle
+            // 
+            this.label_curveLimitTitle.AutoSize = true;
+            this.label_curveLimitTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_curveLimitTitle.ForeColor = System.Drawing.SystemColors.Window;
+            this.label_curveLimitTitle.Location = new System.Drawing.Point(742, 11);
+            this.label_curveLimitTitle.Name = "label_curveLimitTitle";
+            this.label_curveLimitTitle.Size = new System.Drawing.Size(42, 19);
+            this.label_curveLimitTitle.TabIndex = 22;
+            this.label_curveLimitTitle.Text = "Limit";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +472,7 @@
         private System.Windows.Forms.ComboBox comboBox_curveType;
         private System.Windows.Forms.Label label_curveType;
         private System.Windows.Forms.CheckBox checkbox_debug;
+        private System.Windows.Forms.Label label_curveLimitTitle;
     }
 }
 

@@ -39,7 +39,7 @@ namespace BezierGen
             }
             comboBox_documentType.SelectedIndex = 0;
             i = 0;
-            while (i < 10)
+            while (i < 50)
             {
                 comboBox_points.Items.Insert(i, (3 * (i + 1)) + 1);
                 i++;
@@ -82,8 +82,16 @@ namespace BezierGen
                 int i = 0;
                 int control = int.Parse(comboBox_points.SelectedItem.ToString());
 
-                Random random = new Random();
+                Random random;
 
+                if (string.IsNullOrWhiteSpace(textBox_seed.Text))
+                {
+                    random = new Random();
+                }
+                else
+                {
+                    random = new Random(int.Parse(textBox_seed.Text));
+                }
                 List<Point> bezierControl = new List<Point>();
 
                 Document currentDocument = documentDB[comboBox_documentType.SelectedIndex];
@@ -364,6 +372,13 @@ namespace BezierGen
         private void checkbox_debug_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_genSeed_Click(object sender, EventArgs e)
+        {
+            Random randomSeed = new Random();
+            int randomSeedNumber = randomSeed.Next();
+            textBox_seed.Text = randomSeedNumber.ToString();
         }
     }
 }

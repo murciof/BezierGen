@@ -51,7 +51,12 @@ namespace BezierGen
                 comboBox_stroke.Items.Insert(i, i + 1);
                 i++;
             }
+
+            comboBox_curveType.Items.Insert(0, "Bezier Curve");
+            comboBox_curveType.Items.Insert(1, "Normal Operation");
+
             comboBox_stroke.SelectedIndex = 0;
+            comboBox_curveType.SelectedIndex = 0;
 
             button_mag1x.Font = new Font(button_mag1x.Font, FontStyle.Bold);
             button_orientationP.Font = new Font(button_orientationP.Font, FontStyle.Bold);
@@ -121,9 +126,57 @@ namespace BezierGen
                 int documentWithDoubleMarginX = currentDocument.GetDimensionX() - 2 * marginX;
                 int documentWithDoubleMarginY = currentDocument.GetDimensionY() - 2 * marginY;
 
+                int randomXPoint;
+                int randomYPoint;
+
+                int randomXPointCache = 0;
+                int randomYPointCache = 0;
+
                 while (i < control)
                 {
-                    bezierControl.Add(new Point(random.Next(marginX * magRatio, documentWithMarginX * magRatio), random.Next(marginY * magRatio, documentWithMarginY * magRatio)));
+                    
+                    if (i != 0)
+                    {
+                        if (trackBar_curveLimit.Value == 0)
+                        {
+                            randomXPoint = random.Next(marginX * magRatio, documentWithMarginX * magRatio);
+                            randomYPoint = random.Next(marginY * magRatio, documentWithMarginY * magRatio);
+                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
+                        }
+                        else
+                        {
+                            /*while((((randomXPointCache - trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache + trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache - trackBar_curveLimit.Value) <= documentWithMarginX) && ((randomXPointCache + trackBar_curveLimit.Value) <= documentWithMarginX)) == false)
+                            {
+                              randomXPoint = random.Next((randomXPointCache - trackBar_curveLimit.Value) * magRatio, (randomXPointCache + trackBar_curveLimit.Value) * magRatio);
+                            }*/
+
+                            randomXPoint = random.Next((randomXPointCache - trackBar_curveLimit.Value) * magRatio, (randomXPointCache + trackBar_curveLimit.Value) * magRatio);
+                            randomYPoint = random.Next((randomYPointCache - trackBar_curveLimit.Value) * magRatio, (randomYPointCache + trackBar_curveLimit.Value) * magRatio);
+                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
+                            randomXPointCache = randomXPoint;
+                            randomYPointCache = randomYPoint;
+                        }
+                        
+                    }
+                    else
+                    {
+                        if(trackBar_curveLimit.Value == 0)
+                        {
+                            randomXPoint = random.Next(marginX * magRatio, documentWithMarginX * magRatio);
+                            randomYPoint = random.Next(marginY * magRatio, documentWithMarginY * magRatio);
+
+                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
+                        }
+                        else
+                        {
+                            randomXPoint = random.Next(marginX * magRatio, documentWithMarginX * magRatio);
+                            randomYPoint = random.Next(marginY * magRatio, documentWithMarginY * magRatio);
+
+                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
+                            randomXPointCache = randomXPoint;
+                            randomYPointCache = randomYPoint;
+                        }
+                    }
 
                     i++;
                 }
@@ -136,7 +189,15 @@ namespace BezierGen
                 e.Graphics.DrawRectangle(rectanglePen, rect);
                 e.Graphics.FillRectangle(rectangleBackground, rect);
                 e.Graphics.DrawRectangle(marginPen, rectMargin);
-                e.Graphics.DrawBeziers(bezierPen, bezierPoints);
+                if(comboBox_curveType.SelectedIndex == 0)
+                {
+                    e.Graphics.DrawBeziers(bezierPen, bezierPoints);
+                }
+                if (comboBox_curveType.SelectedIndex == 1)
+                {
+                    e.Graphics.DrawCurve(bezierPen, bezierPoints);
+                }
+                
             }
 
             generateActivation = false;
@@ -253,8 +314,17 @@ namespace BezierGen
             isPortrait = false;
         }
 
-        
-
-        
+        private void trackBar_curveLimit_Scroll(object sender, EventArgs e)
+        {
+            if(trackBar_curveLimit.Value == 0)
+            {
+                label_curveLimit.Text = "No Limit";
+            }
+            else
+            {
+                label_curveLimit.Text = trackBar_curveLimit.Value.ToString();
+            }
+            
+        }
     }
 }

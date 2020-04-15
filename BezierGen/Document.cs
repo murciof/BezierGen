@@ -8,18 +8,28 @@ namespace BezierGen
 {
     class Document
     {
-        int dimensionX;
-        int dimensionY;
-        int marginX;
-        int marginY;
-        string documentType;
-        public Document(int dimensionX, int dimensionY, int marginX, int marginY, string documentType)
+        private int dimensionX;
+        private int dimensionY;
+        private string documentType;
+        public Document(int dimensionX, int dimensionY, string documentType)
         {
             this.dimensionX = dimensionX;
             this.dimensionY = dimensionY;
-            this.marginX = marginX;
-            this.marginY = marginY;
             this.documentType = documentType;
+        }
+
+        public int GetDimensionX()
+        {
+            return dimensionX;
+        }
+
+        public int GetDimensionY()
+        {
+            return dimensionY;
+        }
+        public string GetDocumentType()
+        {
+            return documentType;
         }
     }
 }

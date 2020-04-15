@@ -13,34 +13,75 @@ namespace BezierGen
     public partial class MainForm : Form
     {
 
-        bool generateActivation = false;
+        private bool generateActivation = false;
+        static private Document[] documentDB =
+        {
+            new Document(210, 297, "A4 Paper (210mm x 297mm)"),
+            new Document(80, 50, "Business Card (80mm x 50mm)")
+        };
 
         public MainForm()
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
+            InitInterface();
+        }
+
+        private void InitInterface()
+        {
+            int i = 0;
+            while (i < documentDB.Length)
+            {
+                comboBox_documentType.Items.Insert(i, documentDB[i].GetDocumentType());
+                i++;
+            }
+            comboBox_documentType.SelectedIndex = 0;
+            i = 0;
+            while (i < 10)
+            {
+                comboBox_points.Items.Insert(i, (3 * (i + 1)) + 1);
+                i++;
+            }
+            comboBox_points.SelectedIndex = 0;
+            i = 0;
+            while (i < 10)
+            {
+                comboBox_stroke.Items.Insert(i, i + 1);
+                i++;
+            }
+            comboBox_stroke.SelectedIndex = 0;
         }
 
         private void GenerateBezier(object sender, PaintEventArgs e)
         {
             if (generateActivation == true)
             {
-                Pen blackPen = new Pen(Color.Yellow, 2);
+                Pen bezierPen = new Pen(Color.Orange, 1);
+                Pen rectanglePen = new Pen(Color.Black, 2);
+                SolidBrush rectangleBackground = new SolidBrush(Color.White);
 
                 int i = 0;
-                int control = 13;
+                int control = int.Parse(comboBox_points.SelectedItem.ToString());
+
                 Random random = new Random();
+
                 List<Point> bezierControl = new List<Point>();
+
+                Document currentDocument = documentDB[comboBox_documentType.SelectedIndex];
+
                 while (i < control)
                 {
-                    bezierControl.Add(new Point(random.Next(0, 400), random.Next(0, 400)));
+                    bezierControl.Add(new Point(random.Next(0, currentDocument.GetDimensionX()), random.Next(0, currentDocument.GetDimensionY())));
                     i++;
                 }
 
+                Rectangle rect = new Rectangle(0,0,currentDocument.GetDimensionX(), currentDocument.GetDimensionY());
                 Point[] bezierPoints = bezierControl.ToArray();
 
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                e.Graphics.DrawBeziers(blackPen, bezierPoints);
+                e.Graphics.DrawRectangle(rectanglePen, rect);
+                e.Graphics.FillRectangle(rectangleBackground, rect);
+                e.Graphics.DrawBeziers(bezierPen, bezierPoints);
             }
 
             generateActivation = false;

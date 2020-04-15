@@ -145,12 +145,15 @@ namespace BezierGen
                         }
                         else
                         {
-                            /*while((((randomXPointCache - trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache + trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache - trackBar_curveLimit.Value) <= documentWithMarginX) && ((randomXPointCache + trackBar_curveLimit.Value) <= documentWithMarginX)) == false)
+                            /*
+                             * INCOMPLETE - Magnified Curve Generation w/ Limits
+                             * 
+                             * while((((randomXPointCache - trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache + trackBar_curveLimit.Value) >= marginX) && ((randomXPointCache - trackBar_curveLimit.Value) <= documentWithMarginX) && ((randomXPointCache + trackBar_curveLimit.Value) <= documentWithMarginX)) == false)
                             {
                               randomXPoint = random.Next((randomXPointCache - trackBar_curveLimit.Value) * magRatio, (randomXPointCache + trackBar_curveLimit.Value) * magRatio);
                             }*/
 
-                            
+
 
                             int randomXPointCacheTrackbarDeltaNeg = randomXPointCache - trackBar_curveLimit.Value;
                             int randomXPointCacheTrackbarDeltaPos = randomXPointCache + trackBar_curveLimit.Value;
@@ -160,13 +163,30 @@ namespace BezierGen
 
                             randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg * magRatio, randomXPointCacheTrackbarDeltaPos * magRatio);
                             randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg * magRatio, randomYPointCacheTrackbarDeltaPos * magRatio);
-                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
+                            
+
+                            while((randomXPoint >= (documentWithMarginX * magRatio)) || (randomXPoint <= (marginX * magRatio)))
+                            {
+                                randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg * magRatio, randomXPointCacheTrackbarDeltaPos * magRatio);
+                                if (checkbox_debug.Checked)
+                                {
+                                    MessageBox.Show("While Loop\nrandomYPoint = " + randomXPoint + "\nrandomXPointCacheTrackbarDeltaNeg = " + randomXPointCacheTrackbarDeltaNeg + "\nrandomXPointCacheTrackbarDeltaPos = " + randomXPointCacheTrackbarDeltaPos, "Debug Mode", MessageBoxButtons.OK);
+                                }
+                            }
+                            while ((randomYPoint >= (documentWithMarginY * magRatio)) || (randomYPoint <= (marginY * magRatio)))
+                            {
+                                randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg * magRatio, randomYPointCacheTrackbarDeltaPos * magRatio);
+                                if (checkbox_debug.Checked)
+                                {
+                                    MessageBox.Show("While Loop\nrandomYPoint = " + randomYPoint + "\nrandomYPointCacheTrackbarDeltaNeg = " + randomYPointCacheTrackbarDeltaNeg + "\nnrandomYPointCacheTrackbarDeltaPos = " + randomYPointCacheTrackbarDeltaPos, "Debug Mode", MessageBoxButtons.OK);
+                                }
+                            }
 
                             if (checkbox_debug.Checked)
                             {
                                 MessageBox.Show("magRatio = "+magRatio+"\nrandomXPointCache = " + randomXPointCache + "\nrandomYPointCache = " + randomYPointCache + "\nrandomXPoint = "+ randomXPoint + "\nrandomYPoint = "+randomYPoint, "Debug Mode", MessageBoxButtons.OK);
                             }
-
+                            bezierControl.Add(new Point(randomXPoint, randomYPoint));
                             randomXPointCache = randomXPoint;
                             randomYPointCache = randomYPoint;
                         }

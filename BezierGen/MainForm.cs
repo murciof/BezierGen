@@ -150,9 +150,23 @@ namespace BezierGen
                               randomXPoint = random.Next((randomXPointCache - trackBar_curveLimit.Value) * magRatio, (randomXPointCache + trackBar_curveLimit.Value) * magRatio);
                             }*/
 
-                            randomXPoint = random.Next((randomXPointCache - trackBar_curveLimit.Value) * magRatio, (randomXPointCache + trackBar_curveLimit.Value) * magRatio);
-                            randomYPoint = random.Next((randomYPointCache - trackBar_curveLimit.Value) * magRatio, (randomYPointCache + trackBar_curveLimit.Value) * magRatio);
+                            
+
+                            int randomXPointCacheTrackbarDeltaNeg = randomXPointCache - trackBar_curveLimit.Value;
+                            int randomXPointCacheTrackbarDeltaPos = randomXPointCache + trackBar_curveLimit.Value;
+
+                            int randomYPointCacheTrackbarDeltaNeg = randomYPointCache - trackBar_curveLimit.Value;
+                            int randomYPointCacheTrackbarDeltaPos = randomYPointCache + trackBar_curveLimit.Value;
+
+                            randomXPoint = random.Next(randomXPointCacheTrackbarDeltaNeg * magRatio, randomXPointCacheTrackbarDeltaPos * magRatio);
+                            randomYPoint = random.Next(randomYPointCacheTrackbarDeltaNeg * magRatio, randomYPointCacheTrackbarDeltaPos * magRatio);
                             bezierControl.Add(new Point(randomXPoint, randomYPoint));
+
+                            if (checkbox_debug.Checked)
+                            {
+                                MessageBox.Show("magRatio = "+magRatio+"\nrandomXPointCache = " + randomXPointCache + "\nrandomYPointCache = " + randomYPointCache + "\nrandomXPoint = "+ randomXPoint + "\nrandomYPoint = "+randomYPoint, "Debug Mode", MessageBoxButtons.OK);
+                            }
+
                             randomXPointCache = randomXPoint;
                             randomYPointCache = randomYPoint;
                         }
@@ -325,6 +339,11 @@ namespace BezierGen
                 label_curveLimit.Text = trackBar_curveLimit.Value.ToString();
             }
             
+        }
+
+        private void checkbox_debug_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

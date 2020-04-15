@@ -34,28 +34,29 @@
             this.comboBox_documentType = new System.Windows.Forms.ComboBox();
             this.button_genCurve = new System.Windows.Forms.Button();
             this.label_documentType = new System.Windows.Forms.Label();
-            this.button_genSeed = new System.Windows.Forms.Button();
             this.label_points = new System.Windows.Forms.Label();
             this.textBox_marginY = new System.Windows.Forms.TextBox();
             this.label_marginX = new System.Windows.Forms.Label();
             this.textBox_marginX = new System.Windows.Forms.TextBox();
             this.label_marginY = new System.Windows.Forms.Label();
+            this.label_stroke = new System.Windows.Forms.Label();
+            this.button_genSeed = new System.Windows.Forms.Button();
             this.textBox_seed = new System.Windows.Forms.TextBox();
             this.label_seed = new System.Windows.Forms.Label();
-            this.label_stroke = new System.Windows.Forms.Label();
             this.canvasPanel = new System.Windows.Forms.Panel();
             this.additionalPanel = new System.Windows.Forms.Panel();
+            this.label_curveLimit = new System.Windows.Forms.Label();
+            this.trackBar_curveLimit = new System.Windows.Forms.TrackBar();
+            this.comboBox_curveType = new System.Windows.Forms.ComboBox();
             this.button_mag5x = new System.Windows.Forms.Button();
             this.button_mag4x = new System.Windows.Forms.Button();
+            this.label_curveType = new System.Windows.Forms.Label();
             this.button_orientationL = new System.Windows.Forms.Button();
             this.button_orientationP = new System.Windows.Forms.Button();
             this.button_mag3x = new System.Windows.Forms.Button();
             this.button_mag2x = new System.Windows.Forms.Button();
             this.button_mag1x = new System.Windows.Forms.Button();
-            this.trackBar_curveLimit = new System.Windows.Forms.TrackBar();
-            this.comboBox_curveType = new System.Windows.Forms.ComboBox();
-            this.label_curveType = new System.Windows.Forms.Label();
-            this.label_curveLimit = new System.Windows.Forms.Label();
+            this.checkbox_debug = new System.Windows.Forms.CheckBox();
             this.menuPanel.SuspendLayout();
             this.additionalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_curveLimit)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // menuPanel
             // 
+            this.menuPanel.Controls.Add(this.checkbox_debug);
             this.menuPanel.Controls.Add(this.comboBox_stroke);
             this.menuPanel.Controls.Add(this.comboBox_points);
             this.menuPanel.Controls.Add(this.comboBox_documentType);
@@ -136,17 +138,6 @@
             this.label_documentType.TabIndex = 0;
             this.label_documentType.Text = "Document Type";
             // 
-            // button_genSeed
-            // 
-            this.button_genSeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.button_genSeed.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.button_genSeed.Location = new System.Drawing.Point(695, 9);
-            this.button_genSeed.Name = "button_genSeed";
-            this.button_genSeed.Size = new System.Drawing.Size(90, 23);
-            this.button_genSeed.TabIndex = 12;
-            this.button_genSeed.Text = "Generate seed";
-            this.button_genSeed.UseVisualStyleBackColor = false;
-            // 
             // label_points
             // 
             this.label_points.AutoSize = true;
@@ -200,6 +191,28 @@
             this.label_marginY.TabIndex = 4;
             this.label_marginY.Text = "My";
             // 
+            // label_stroke
+            // 
+            this.label_stroke.AutoSize = true;
+            this.label_stroke.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_stroke.ForeColor = System.Drawing.SystemColors.Window;
+            this.label_stroke.Location = new System.Drawing.Point(603, 9);
+            this.label_stroke.Name = "label_stroke";
+            this.label_stroke.Size = new System.Drawing.Size(53, 19);
+            this.label_stroke.TabIndex = 8;
+            this.label_stroke.Text = "Stroke";
+            // 
+            // button_genSeed
+            // 
+            this.button_genSeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.button_genSeed.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.button_genSeed.Location = new System.Drawing.Point(695, 9);
+            this.button_genSeed.Name = "button_genSeed";
+            this.button_genSeed.Size = new System.Drawing.Size(90, 23);
+            this.button_genSeed.TabIndex = 12;
+            this.button_genSeed.Text = "Generate seed";
+            this.button_genSeed.UseVisualStyleBackColor = false;
+            // 
             // textBox_seed
             // 
             this.textBox_seed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
@@ -220,17 +233,6 @@
             this.label_seed.Size = new System.Drawing.Size(42, 19);
             this.label_seed.TabIndex = 10;
             this.label_seed.Text = "Seed";
-            // 
-            // label_stroke
-            // 
-            this.label_stroke.AutoSize = true;
-            this.label_stroke.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_stroke.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_stroke.Location = new System.Drawing.Point(603, 9);
-            this.label_stroke.Name = "label_stroke";
-            this.label_stroke.Size = new System.Drawing.Size(53, 19);
-            this.label_stroke.TabIndex = 8;
-            this.label_stroke.Text = "Stroke";
             // 
             // canvasPanel
             // 
@@ -264,6 +266,40 @@
             this.additionalPanel.Size = new System.Drawing.Size(1166, 39);
             this.additionalPanel.TabIndex = 2;
             // 
+            // label_curveLimit
+            // 
+            this.label_curveLimit.AutoSize = true;
+            this.label_curveLimit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_curveLimit.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label_curveLimit.Location = new System.Drawing.Point(901, 13);
+            this.label_curveLimit.Name = "label_curveLimit";
+            this.label_curveLimit.Size = new System.Drawing.Size(53, 15);
+            this.label_curveLimit.TabIndex = 21;
+            this.label_curveLimit.Text = "No Limit";
+            // 
+            // trackBar_curveLimit
+            // 
+            this.trackBar_curveLimit.LargeChange = 10;
+            this.trackBar_curveLimit.Location = new System.Drawing.Point(791, 7);
+            this.trackBar_curveLimit.Maximum = 50;
+            this.trackBar_curveLimit.Name = "trackBar_curveLimit";
+            this.trackBar_curveLimit.Size = new System.Drawing.Size(104, 45);
+            this.trackBar_curveLimit.SmallChange = 5;
+            this.trackBar_curveLimit.TabIndex = 0;
+            this.trackBar_curveLimit.TickFrequency = 5;
+            this.trackBar_curveLimit.Scroll += new System.EventHandler(this.trackBar_curveLimit_Scroll);
+            // 
+            // comboBox_curveType
+            // 
+            this.comboBox_curveType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.comboBox_curveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_curveType.ForeColor = System.Drawing.Color.Black;
+            this.comboBox_curveType.FormattingEnabled = true;
+            this.comboBox_curveType.Location = new System.Drawing.Point(371, 10);
+            this.comboBox_curveType.Name = "comboBox_curveType";
+            this.comboBox_curveType.Size = new System.Drawing.Size(161, 21);
+            this.comboBox_curveType.TabIndex = 15;
+            // 
             // button_mag5x
             // 
             this.button_mag5x.BackColor = System.Drawing.Color.Transparent;
@@ -287,6 +323,17 @@
             this.button_mag4x.Text = "4x";
             this.button_mag4x.UseVisualStyleBackColor = false;
             this.button_mag4x.Click += new System.EventHandler(this.button_mag4x_Click);
+            // 
+            // label_curveType
+            // 
+            this.label_curveType.AutoSize = true;
+            this.label_curveType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_curveType.ForeColor = System.Drawing.SystemColors.Window;
+            this.label_curveType.Location = new System.Drawing.Point(281, 11);
+            this.label_curveType.Name = "label_curveType";
+            this.label_curveType.Size = new System.Drawing.Size(85, 19);
+            this.label_curveType.TabIndex = 14;
+            this.label_curveType.Text = "Curve Type";
             // 
             // button_orientationL
             // 
@@ -348,50 +395,17 @@
             this.button_mag1x.UseVisualStyleBackColor = false;
             this.button_mag1x.Click += new System.EventHandler(this.button_mag1x_Click);
             // 
-            // trackBar_curveLimit
+            // checkbox_debug
             // 
-            this.trackBar_curveLimit.LargeChange = 10;
-            this.trackBar_curveLimit.Location = new System.Drawing.Point(791, 7);
-            this.trackBar_curveLimit.Maximum = 50;
-            this.trackBar_curveLimit.Name = "trackBar_curveLimit";
-            this.trackBar_curveLimit.Size = new System.Drawing.Size(104, 45);
-            this.trackBar_curveLimit.SmallChange = 5;
-            this.trackBar_curveLimit.TabIndex = 0;
-            this.trackBar_curveLimit.TickFrequency = 5;
-            this.trackBar_curveLimit.Scroll += new System.EventHandler(this.trackBar_curveLimit_Scroll);
-            // 
-            // comboBox_curveType
-            // 
-            this.comboBox_curveType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.comboBox_curveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_curveType.ForeColor = System.Drawing.Color.Black;
-            this.comboBox_curveType.FormattingEnabled = true;
-            this.comboBox_curveType.Location = new System.Drawing.Point(371, 10);
-            this.comboBox_curveType.Name = "comboBox_curveType";
-            this.comboBox_curveType.Size = new System.Drawing.Size(161, 21);
-            this.comboBox_curveType.TabIndex = 15;
-            // 
-            // label_curveType
-            // 
-            this.label_curveType.AutoSize = true;
-            this.label_curveType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_curveType.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_curveType.Location = new System.Drawing.Point(281, 11);
-            this.label_curveType.Name = "label_curveType";
-            this.label_curveType.Size = new System.Drawing.Size(85, 19);
-            this.label_curveType.TabIndex = 14;
-            this.label_curveType.Text = "Curve Type";
-            // 
-            // label_curveLimit
-            // 
-            this.label_curveLimit.AutoSize = true;
-            this.label_curveLimit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_curveLimit.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label_curveLimit.Location = new System.Drawing.Point(901, 13);
-            this.label_curveLimit.Name = "label_curveLimit";
-            this.label_curveLimit.Size = new System.Drawing.Size(53, 15);
-            this.label_curveLimit.TabIndex = 21;
-            this.label_curveLimit.Text = "No Limit";
+            this.checkbox_debug.AutoSize = true;
+            this.checkbox_debug.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.checkbox_debug.Location = new System.Drawing.Point(843, 13);
+            this.checkbox_debug.Name = "checkbox_debug";
+            this.checkbox_debug.Size = new System.Drawing.Size(107, 17);
+            this.checkbox_debug.TabIndex = 14;
+            this.checkbox_debug.Text = "Debugging mode";
+            this.checkbox_debug.UseVisualStyleBackColor = true;
+            this.checkbox_debug.CheckedChanged += new System.EventHandler(this.checkbox_debug_CheckedChanged);
             // 
             // MainForm
             // 
@@ -443,6 +457,7 @@
         private System.Windows.Forms.Label label_curveLimit;
         private System.Windows.Forms.ComboBox comboBox_curveType;
         private System.Windows.Forms.Label label_curveType;
+        private System.Windows.Forms.CheckBox checkbox_debug;
     }
 }
 
